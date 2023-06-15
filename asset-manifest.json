@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/fullstack-top-scores-client/static/css/main.073c9b0a.css",
+    "main.js": "/fullstack-top-scores-client/static/js/main.cc0cf913.js",
+    "static/js/787.762f8d97.chunk.js": "/fullstack-top-scores-client/static/js/787.762f8d97.chunk.js",
+    "index.html": "/fullstack-top-scores-client/index.html",
+    "main.073c9b0a.css.map": "/fullstack-top-scores-client/static/css/main.073c9b0a.css.map",
+    "main.cc0cf913.js.map": "/fullstack-top-scores-client/static/js/main.cc0cf913.js.map",
+    "787.762f8d97.chunk.js.map": "/fullstack-top-scores-client/static/js/787.762f8d97.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.cc0cf913.js"
+  ]
+}
