@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import TopScoreForm from "./components/TopScoreForm/TopScoreForm";
+import TopScoreList from "./components/TopScoreList/TopScoreList";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [scores, setScores] = useState([]);
+
+    function loadData() {
+        fetch("https://xxfydv-8080.csb.app/api/list/")
+            .then((x) => x.json())
+            .then((response) => {
+                setScores(response);
+            });
+    }
+
+    useEffect(loadData, []);
+
+    function addScore(name, score) {
+        fetch("https://xxfydv-8080.csb.app/api/list/new", {
+            method: "POST",
+            body: JSON.stringify({
+                name,
+                score,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            mode: "cors",
+        })
+            .then((x) => x.json())
+            .then(loadData);
+    }
+
+    function deleteScore(id) {
+        fetch(`https://xxfydv-8080.csb.app/api/list/${id}/delete`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            mode: "cors",
+        })
+            .then((x) => x.json())
+            .then(loadData);
+    }
+
+    return (
+        <div className="App">
+            <TopScoreForm addScore={addScore} />
+            <TopScoreList scores={scores} deleteScore={deleteScore} />
+        </div>
+    );
 }
 
 export default App;
